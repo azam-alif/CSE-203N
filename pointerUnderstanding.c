@@ -6,7 +6,7 @@ int main(){
     printf("Address of i: %u\n", &i);
     printf("Value of i accessing via j: %d\n", *j);
     printf("Value of i accessing via j and k: %d\n", **k);
-    j = j + 2;
+    *j = *j + 2;
     printf("After incrementing by 2: \n");
     printf("Value of j: %u\n", j);
     printf("Address of i: %u\n", &i);
