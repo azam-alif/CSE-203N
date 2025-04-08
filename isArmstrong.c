@@ -1,11 +1,13 @@
 #include<stdio.h>
 
-int armstrong(int num);
+int armstrong(int num, int power);
+int size(int num);
 
 int main(){
-    int num, sum;
+    int num, sum, power;
     scanf("%d",&num);
-    sum = armstrong(num);
+    power = size(num);
+    sum = armstrong(num, power);
     if(sum == num){
         printf("%d is an Armstrong number.\n", num);
     } else {
@@ -14,17 +16,31 @@ int main(){
     return 0;
 }
 
-int armstrong(int num){
-    int sum=0, remainder;
+int armstrong(int num, int power){
+    int sum=0, remainder,i;
     while(1){
+        int temp = 1;
         remainder = num % 10;
-        sum += (remainder*remainder*remainder);
+        for(i=0; i<power; i++){
+            temp = temp*remainder;
+        }
+        sum += temp;
         num = num / 10;
-        if (num < 10){
-            sum = sum + (num*num*num);
+        if (num == 0){
             break;
         }
     }
     return sum;
 }
-    
+
+int size(int num){
+    int count = 0;
+    while(1){
+        num = num/10;
+        count++;
+        if (num == 0){
+            break;
+        }
+    }
+    return count;
+}
