@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\title{CSE 203N}
+\author{2021132040}
+\date{Submission date: 08/04/2025}
+
+\begin{document}
+
+\maketitle
+
+\lstset{
+  language=C,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  frame=single,
+  columns=flexible,
+  showstringspaces=false,
+  showspaces=false
+}
+
+\section*{Problem-1} C program to check whether an integer is an Armstrong number.
+\begin{lstlisting}
+#include<stdio.h>
+
+int armstrong(int num, int power);
+int size(int num); //to get the length of the integer
+
+int main(){
+    int num, sum, power;
+    scanf("%d",&num);
+    power = size(num);
+    sum = armstrong(num, power);
+    if(sum == num){
+        printf("%d is an Armstrong number.\n", num);
+    } else {
+        printf("%d is not an Armstrong number.\n", num);
+    }
+    return 0;
+}
+
+int armstrong(int num, int power){
+    int sum=0, remainder,i;
+    while(1){
+        int temp = 1;
+        remainder = num % 10;
+        for(i=0; i<power; i++){
+            temp = temp*remainder;
+        }
+        sum += temp;
+        num = num / 10;
+        if (num == 0){
+            break;
+        }
+    }
+    return sum;
+}
+
+int size(int num){
+    int count = 0;
+    while(1){
+        num = num/10;
+        count++;
+        if (num == 0){
+            break;
+        }
+    }
+    return count;
+}
+\end{lstlisting}
+
+\section*{Problem-2} C program to reverse an integer number.
+\begin{lstlisting}
+#include<stdio.h>
+int main(){
+    int a, reverse = 0, remainder;
+    printf("Enter a number: ");
+    scanf("%d", &a);
+    do{
+        remainder = a%10;
+        reverse = reverse * 10 + remainder;
+        a = a/10;
+    } while (a != 0);
+    printf("reverse = %d\n", reverse);
+    return 0;
+}
+\end{lstlisting}
+\section*{Problem-3} C program for printing the larger among the sums and odd numbers in an array. 
+\begin{lstlisting}
+#include<stdio.h>
+int main(){
+    int n, i, even_sum = 0, odd_sum = 0;
+    printf("Enter the length of the array: ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter values: ");
+    for(i=0; i<n; i++){
+        scanf("%d", &arr[i]);
+        if(arr[i]%2 == 0){
+            even_sum += arr[i];
+        } else {
+            odd_sum += arr[i];
+        }
+    }
+    if(even_sum > odd_sum){
+        printf("Sum of even numbers is greater. Which is %d\n", even_sum);
+    } else if(even_sum == odd_sum) {
+        printf("Sum of even numbers is equal to the sum of  odd numbers. Which is %d\n", even_sum);
+    } else {
+        printf("Sum of odd numbers is greater. Which is %d\n", odd_sum);
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+\section*{Problem-4} C program for counting the duplicate integer in an array. 
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+    int n, i, j, count = 0;
+    printf("Enter length of the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter array elements:\n");
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    for(i = 0; i < n; i++) {
+        for(j = i + 1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+                break; // avoiding counting the same duplicate again
+            }
+        }
+    }
+
+    printf("Total number of duplicate elements: %d\n", count);
+    return 0;
+}
+\end{lstlisting}
+\end{document}
+
