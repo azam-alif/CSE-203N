@@ -4,9 +4,10 @@ int main(){
     printf("Enter three values: ");
     scanf("%d%d%d", &a, &b, &c);
     max = a;
-    if (b > a && b > c){
+    if (b > max){
         max = b;
-    } else if (c > a && c > b){
+    }
+    if (c > max){
         max = c;
     }
     printf("%d is the max value\n", max);

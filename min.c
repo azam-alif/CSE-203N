@@ -4,9 +4,10 @@ int main(){
     printf("Enter three values: ");
     scanf("%d%d%d", &a, &b, &c);
     min = a;
-    if (b < a && b < c){
+    if (b < min){
         min = b;
-    } else if (c < a && c < b){
+    }
+    if (c < min){
         min = c;
     }
     printf("%d is the min value\n", min);
